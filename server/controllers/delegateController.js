@@ -30,7 +30,29 @@ const getDelegates = async (req, res) => {
   }
 };
 
+// Get Single Delegate
+const getDelegateById = async (req, res) => {
+  try {
+    const delegate = await Delegate.findById(req.params.id);
+
+    if (!delegate) {
+      return res.status(404).json({
+        success: false,
+        message: "Delegate not found",
+      });
+    }
+
+    res.status(200).json(delegate);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createDelegate,
   getDelegates,
+  getDelegateById,
 };
