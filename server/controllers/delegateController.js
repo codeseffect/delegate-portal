@@ -8,12 +8,29 @@ const createDelegate = async (req, res) => {
     res.status(201).json(delegate);
   } catch (error) {
     res.status(400).json({
-  success: false,
-  message: error.message,
-});
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// Get All Delegates
+const getDelegates = async (req, res) => {
+  try {
+    const delegates = await Delegate.find().sort({
+      createdAt: -1,
+    });
+
+    res.status(200).json(delegates);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
 module.exports = {
   createDelegate,
+  getDelegates,
 };
