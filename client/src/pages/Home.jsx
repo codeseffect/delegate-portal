@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { getDelegates } from "../services/delegateService";
 
+import Navbar from "../components/Navbar";
+import SearchBar from "../components/SearchBar";
+import DelegateCard from "../components/DelegateCard";
+
 function Home() {
   const [delegates, setDelegates] = useState([]);
 
@@ -18,23 +22,22 @@ function Home() {
   }, []);
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Delegate Directory</h1>
+    <>
+      <Navbar />
 
-      <hr />
+      <main className="max-w-7xl mx-auto px-6 py-8">
+        <SearchBar />
 
-      {delegates.map((delegate) => (
-        <div key={delegate._id}>
-          <h3>{delegate.fullName}</h3>
-
-          <p>{delegate.designation}</p>
-
-          <p>{delegate.country}</p>
-
-          <hr />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {delegates.map((delegate) => (
+            <DelegateCard
+              key={delegate._id}
+              delegate={delegate}
+            />
+          ))}
         </div>
-      ))}
-    </div>
+      </main>
+    </>
   );
 }
 
