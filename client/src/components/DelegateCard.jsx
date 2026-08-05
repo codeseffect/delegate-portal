@@ -1,27 +1,28 @@
 function DelegateCard({ delegate }) {
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden cursor-pointer">
+    <div className="bg-white rounded-xl shadow hover:shadow-xl transition duration-300 overflow-hidden">
       <img
-        src={
-          delegate.profileImage ||
-          "https://via.placeholder.com/300x300?text=Delegate"
-        }
-        alt={delegate.fullName}
-        className="w-full h-64 object-cover"
+  src="https://picsum.photos/500"
+  alt={delegate.fullName}
+  className="w-full h-60 object-cover"
       />
 
-      <div className="p-4">
+      <div className="p-5">
         <h2 className="font-bold text-lg">
           {delegate.fullName}
         </h2>
 
-        <p className="text-gray-600">
+        <p className="text-blue-700 font-medium">
           {delegate.designation}
         </p>
 
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="text-gray-500 mt-1">
           {delegate.country}
         </p>
+
+        <button className="mt-5 w-full bg-blue-700 text-white py-2 rounded-lg hover:bg-blue-800">
+          View Profile
+        </button>
       </div>
     </div>
   );

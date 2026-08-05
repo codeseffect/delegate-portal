@@ -1,12 +1,12 @@
-function SearchBar() {
+function SearchBar({ search, setSearch }) {
   return (
-    <div className="my-8">
-      <input
-        type="text"
-        placeholder="Search delegates..."
-        className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-    </div>
+    <input
+      type="text"
+      placeholder="Search delegates..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="w-full border rounded-xl p-4 shadow-sm focus:ring-2 focus:ring-blue-600 focus:outline-none"
+    />
   );
 }
 
