@@ -1,12 +1,40 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDelegates } from "../services/delegateService";
+import {
+  getDelegates,
+  deleteDelegate,
+} from "../services/delegateService";
 
 function AdminDelegates() {
   const [delegates, setDelegates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const handleDelete = async (id) => {
+  const confirmed = window.confirm(
+    "Are you sure you want to delete this delegate?"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    await deleteDelegate(id);
+
+    setDelegates((current) =>
+      current.filter((delegate) => delegate._id !== id)
+    );
+  } catch (error) {
+    console.error(error);
+
+    setError(
+      error.response?.data?.message ||
+        "Failed to delete delegate."
+    );
+  }
+};
 
   useEffect(() => {
     const fetchDelegates = async () => {
@@ -140,17 +168,19 @@ function AdminDelegates() {
                 {/* Actions */}
                 <div className="col-span-2 flex gap-2">
 
-                  <button
-                    className="px-3 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
-                  >
-                    Edit
-                  </button>
+                <button
+                        onClick={() => navigate(`/admin/delegates/${delegate._id}/edit`)}
+                        className="px-3 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
+                >
+                        Edit
+                </button>
 
-                  <button
+                <button
+                    onClick={() => handleDelete(delegate._id)}
                     className="px-3 py-2 text-sm bg-red-50 text-red-600 rounded-lg hover:bg-red-100"
-                  >
+                >
                     Delete
-                  </button>
+                </button>
 
                 </div>
 

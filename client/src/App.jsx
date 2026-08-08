@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import DelegateProfile from "./pages/DelegateProfile";
 import AdminDelegates from "./pages/AdminDelegates";
 import AddDelegate from "./pages/AddDelegate";
+import EditDelegate from "./pages/EditDelegate";
 
 function App() {
   return (
@@ -31,6 +32,11 @@ function App() {
         <Route
           path="/admin/delegates/new"
           element={<AddDelegate />}
+        />
+
+        <Route
+          path="/admin/delegates/:id/edit"
+          element={<EditDelegate />}
         />
 
       </Routes>
