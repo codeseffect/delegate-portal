@@ -6,6 +6,7 @@ const {
   getDelegates,
   getDelegateById,
   updateDelegate,
+  deleteDelegate,
 } = require("../controllers/delegateController");
 
 // Get All Delegates
@@ -15,5 +16,7 @@ router.get("/:id", getDelegateById);
 router.post("/", createDelegate);
 // Update Delegate
 router.put("/:id", updateDelegate);
+// Delete Delegate
+router.delete("/:id", deleteDelegate);
 
 module.exports = router;

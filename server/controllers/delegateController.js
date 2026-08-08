@@ -80,9 +80,35 @@ const updateDelegate = async (req, res) => {
   }
 };
 
+
+// Delete Delegate
+const deleteDelegate = async (req, res) => {
+  try {
+    const delegate = await Delegate.findByIdAndDelete(req.params.id);
+
+    if (!delegate) {
+      return res.status(404).json({
+        success: false,
+        message: "Delegate not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Delegate deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createDelegate,
   getDelegates,
   getDelegateById,
   updateDelegate,
+  deleteDelegate,
 };
