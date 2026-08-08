@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function DelegateCard({ delegate }) {
   return (
     <div className="bg-white rounded-xl shadow hover:shadow-xl transition duration-300 overflow-hidden">
@@ -20,9 +22,12 @@ function DelegateCard({ delegate }) {
           {delegate.country}
         </p>
 
-        <button className="mt-5 w-full bg-blue-700 text-white py-2 rounded-lg hover:bg-blue-800">
-          View Profile
-        </button>
+       <Link
+  to={`/delegate/${delegate._id}`}
+  className="block mt-5 bg-blue-700 text-white text-center py-2 rounded-lg hover:bg-blue-800"
+>
+  View Profile
+</Link>
       </div>
     </div>
   );

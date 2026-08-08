@@ -52,12 +52,14 @@ const delegateSchema = new mongoose.Schema(
       },
     ],
 
-    awards: [
-      {
-        title: String,
-        image: String,
-      },
-    ],
+   awards: [
+  {
+    title: String,
+    certificateNumber: String,
+    issuedDate: Date,
+    image: String,
+  },
+],
   },
   {
     timestamps: true,
