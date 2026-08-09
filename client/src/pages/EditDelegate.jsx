@@ -30,6 +30,13 @@ function EditDelegate() {
     image: "",
   });
 
+  const [awardForm, setAwardForm] = useState({
+  title: "",
+  certificateNumber: "",
+  issuedDate: "",
+  image: "",
+});
+
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [addingCertificate, setAddingCertificate] = useState(false);
@@ -87,6 +94,15 @@ function EditDelegate() {
       [name]: value,
     }));
   };
+
+  const handleAwardChange = (event) => {
+  const { name, value } = event.target;
+
+  setAwardForm((current) => ({
+    ...current,
+    [name]: value,
+  }));
+};
 
   // Save delegate information
   const handleSubmit = async (event) => {

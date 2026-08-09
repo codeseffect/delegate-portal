@@ -43,23 +43,40 @@ const delegateSchema = new mongoose.Schema(
       default: "",
     },
 
-    certificates: [
-      {
-        title: String,
-        certificateNumber: String,
-        issuedDate: Date,
-        image: String,
-      },
-    ],
-
-   awards: [
+    recognitions: [
   {
-    title: String,
-    certificateNumber: String,
-    issuedDate: Date,
-    image: String,
+    category: {
+      type: String,
+      required: true,
+    },
+
+    type: {
+      type: String,
+      required: true,
+    },
+
+    title: {
+      type: String,
+      required: true,
+    },
+
+    certificateNumber: {
+      type: String,
+      default: "",
+    },
+
+    issuedDate: {
+      type: Date,
+    },
+
+    image: {
+      type: String,
+      default: "",
+    },
   },
 ],
+
+
   },
   {
     timestamps: true,

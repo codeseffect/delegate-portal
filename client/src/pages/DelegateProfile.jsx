@@ -131,6 +131,96 @@ function DelegateProfile() {
 
                 </div>
 
+                <div className="mt-10">
+
+                  <h2 className="text-2xl font-bold mb-4">
+                    Summit Information
+                  </h2>
+
+                  <div className="bg-gray-50 rounded-lg p-5">
+
+                    <p className="font-semibold">
+                      {delegate.summit}
+                    </p>
+
+                    <p className="text-gray-600">
+                      {delegate.summitYear}
+                    </p>
+
+                    <p className="text-gray-600">
+                      Group: {delegate.summitGroup}
+                    </p>
+
+                  </div>
+
+                </div>
+
+
+
+<div className="mt-10">
+
+  <h2 className="text-2xl font-bold mb-4">
+    Recognition
+  </h2>
+
+  <div className="flex gap-5 overflow-x-auto pb-4">
+
+    {delegate.recognitions?.map((recognition) => (
+      <div
+        key={recognition._id}
+        className="min-w-[300px] bg-gray-50 rounded-xl p-6 border"
+      >
+
+        <p className="text-sm text-gray-500">
+          {recognition.category}
+        </p>
+
+        <h3 className="text-xl font-bold mt-2">
+          {recognition.title}
+        </h3>
+
+        {recognition.certificateNumber && (
+          <div className="mt-5">
+
+            <p className="text-sm text-gray-500">
+              Certificate Number
+            </p>
+
+            <p className="font-semibold">
+              {recognition.certificateNumber}
+            </p>
+
+          </div>
+        )}
+
+        {recognition.issuedDate && (
+          <div className="mt-4">
+
+            <p className="text-sm text-gray-500">
+              Issued
+            </p>
+
+            <p>
+              {new Date(
+                recognition.issuedDate
+              ).toLocaleDateString()}
+            </p>
+
+          </div>
+        )}
+
+      </div>
+    ))}
+
+  </div>
+
+</div>
+
+
+
+
+
+
               </div>
 
             </div>
